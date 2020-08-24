@@ -2,7 +2,7 @@ import datacompy
 from datetime import datetime
 
 
-def com1(df1, df2):
+def com1(df1, df2, run_id):
     compare = datacompy.Compare(
         df1,
         df2,
@@ -15,7 +15,7 @@ def com1(df1, df2):
     )
     compare.matches(ignore_extra_columns=False)
 
-    filename1 = "File_Comp_Report" + datetime.now().strftime("%Y%m%d_%H%M%S") + ".txt"
+    filename1 = "File_Comp_Report" + run_id + ".txt"
 
     with open(filename1, 'w') as wf:
         wf.write(compare.report())
