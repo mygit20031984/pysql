@@ -1,8 +1,6 @@
 import datacompy
-from datetime import datetime
 
-
-def com1(df1, df2, run_id):
+def com1(df1, df2, run_id, parent_dir):
     compare = datacompy.Compare(
         df1,
         df2,
@@ -15,7 +13,7 @@ def com1(df1, df2, run_id):
     )
     compare.matches(ignore_extra_columns=False)
 
-    filename1 = "File_Comp_Report" + run_id + ".txt"
+    filename1 = parent_dir + "/File_Comp_Report" + run_id + ".txt"
 
     with open(filename1, 'w') as wf:
         wf.write(compare.report())
