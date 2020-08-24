@@ -1,24 +1,14 @@
 import pandas as pd
-import pandasql
-import datacompy
-from datetime import datetime
+import compare
 
-df1 = pd.read_csv("file1.csv")
-df2 = pd.read_csv("file2.csv")
+xl = pd.ExcelFile("input_file.xlsx")
+df = xl.parse("Sheet1")
+x1 = df['Value'][1]
+x2 = df['Value'][4]
+print(x1)
+print(x2)
 
-compare = datacompy.Compare(
-    df1,
-    df2,
-    on_index=True,
-    #    join_columns=2,  #You can also specify a list of columns
-    abs_tol=0,  # Optional, defaults to 0
-    rel_tol=0,  # Optional, defaults to 0
-    df1_name='Original',  # Optional, defaults to 'df1'
-    df2_name='New'  # Optional, defaults to 'df2'
-)
-compare.matches(ignore_extra_columns=False)
+df1 = pd.read_csv(x1)
+df2 = pd.read_csv(x2)
 
-filename1 = "File_Comp_Report" + datetime.now().strftime("%Y%m%d_%H%M%S") + ".txt"
-
-with open(filename1, 'w') as wf:
-    wf.write(compare.report())
+compare.com1(df1, df2)
