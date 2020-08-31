@@ -6,54 +6,52 @@ import find_dup
 from datetime import datetime
 import os
 
-# Test
+#############################################
+# Reading Input File
+#############################################
+xl = pd.ExcelFile("input_file.xlsx")
+df = xl.parse("Sheet1")
+df1 = xl.parse("Sheet2")
+
 #############################################
 # Setting up Parent Folder and Run_ID
 #############################################
 run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-parent_dir = "C:/Users/Owner/PycharmProjects/pysql/Results/Report_" + run_id
+parent_dir = df1['Report_Location'][0] + "_" + run_id
 print(parent_dir)
 os.makedirs(parent_dir)
 print("RunID and Parent Dir is Created")
 
-# Reading Input File#
-xl = pd.ExcelFile("input_file.xlsx")
-df = xl.parse("Sheet1")
-tc_cnt = df.count()
-
 for i in df.index:
-    x1 = df['Test_Case_Name'][i]
-    x2 = df['Work_dir'][i]
-    x3 = df['Report_Location'][i]
-    x4 = df['Source File Path'][i]
-    x5 = df['Source File Name'][i]
-    x6 = df['Target File Path'][i]
-    x7 = df['Target File Path'][i]
-    x8 = df['Target File Name'][i]
+    TCN = df['Test_Case_Name'][i]
+    SFP = df['Source File Path'][i]
+    SFN = df['Source File Name'][i]
+    TFP = df['Target File Path'][i]
+    TFN = df['Target File Name'][i]
+    UK = df['Unique_Keys'][i]
+    RF = df['Run_Flag'][i]
 
-    print(x1)
-    print(x2)
-    print(x3)
-    print(x4)
-    print(x5)
-    print(x6)
-    print(x7)
-    print(x8)
+    x8 = SFP + SFN
+    x9 = TFP + TFN
 
-# Creating 2 Dataframes#
-# df1 = pd.read_csv(x1)
-# df2 = pd.read_csv(x2)
-#
-# #############################################
-# # Find Duplicate from Data Sets
-# #############################################
-# # print("Find Duplicate records in Data Sets")
-# df1_dup = find_dup.find_dup1(df1, 'Source', parent_dir, run_id)
-# df2_dup = find_dup.find_dup1(df2, 'Target', parent_dir, run_id)
-#
-# print("Number of Duplicate Records in DF1  = " + str(df1_dup))
-# print("Number of Duplicate Records in DF2  = " + str(df2_dup))
-#
+    # Creating 2 Dataframes#
+    print("Creating Dataframes for Source and Target")
+    df1 = pd.read_csv(x8)
+    df2 = pd.read_csv(x9)
+
+    if not os.path.exists(parent_dir + "/" + TCN):
+        os.makedirs(parent_dir + "/" + TCN)
+
+    ############################################
+    # Find Duplicate from Data Sets
+    ############################################
+    print("Find Duplicate records in Data Sets")
+    df1_dup = find_dup.find_dup1(df1, 'Source', parent_dir, run_id, TCN)
+    df2_dup = find_dup.find_dup1(df2, 'Target', parent_dir, run_id, TCN)
+
+    print("Number of Duplicate Records in DF1 for  " + TCN + " = " + str(df1_dup))
+    print("Number of Duplicate Records in DF1 for  " + TCN + " = " + str(df2_dup))
+
 # #############################################
 # # Remove Duplicate from Source and Target Data Sets
 # #############################################
