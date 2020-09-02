@@ -4,6 +4,7 @@ from code_scripts.parsers import csv
 from datetime import datetime
 import os
 
+
 #############################################
 # Reading Input File
 #############################################
@@ -43,6 +44,7 @@ for i in dfx1.index:
     print("Creating Dataframes for Source and Target")
     if SFT == 'csv':
         df1 = csv.csv1(f1)
+
     if TFT == 'csv':
         df2 = csv.csv1(f2)
 
