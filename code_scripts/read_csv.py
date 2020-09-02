@@ -1,5 +1,6 @@
 import pandas as pd
 from code_scripts import compare, ST, find_dup
+from code_scripts.parsers import csv
 from datetime import datetime
 import os
 
@@ -28,15 +29,14 @@ for i in df.index:
     UK = df['Unique_Keys'][i]
     RF = df['Run_Flag'][i]
 
-    x8 = SFP + SFN
-    x9 = TFP + TFN
+    f1 = SFP + SFN
+    f2 = TFP + TFN
     print("====================================================")
     print("Please find below logs for Test Case Name = " + TCN)
     print("====================================================")
     # Creating 2 Dataframes#
     print("Creating Dataframes for Source and Target")
-    df1 = pd.read_csv(x8)
-    df2 = pd.read_csv(x9)
+    df1, df2 = csv.csv1(f1, f2)
 
     if not os.path.exists(parent_dir + "/" + TCN):
         os.makedirs(parent_dir + "/" + TCN)
