@@ -43,10 +43,10 @@ for i in dfx1.index:
     ############################################
     print("Creating Dataframes for Source and Target")
     if SFT == 'csv':
-        df1 = csv.csv1(f1)
+        df1 = csv.csv_df(f1)
 
     if TFT == 'csv':
-        df2 = csv.csv1(f2)
+        df2 = csv.csv_df(f2)
 
     if not os.path.exists(parent_dir + "/" + TCN):
         os.makedirs(parent_dir + "/" + TCN)
