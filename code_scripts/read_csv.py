@@ -8,35 +8,43 @@ import os
 # Reading Input File
 #############################################
 xl = pd.ExcelFile("Input_file.xlsx")
-df = xl.parse("Sheet1")
-df1 = xl.parse("Sheet2")
+dfx1 = xl.parse("Sheet1")
+dfx2 = xl.parse("Sheet2")
 
 #############################################
 # Setting up Parent Folder and Run_ID
 #############################################
 run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-parent_dir = df1['Report_Location'][0] + "_" + run_id
+parent_dir = dfx2['Report_Location'][0] + "_" + run_id
 print(parent_dir)
 os.makedirs(parent_dir)
 print("RunID and Parent Dir is Created")
 
-for i in df.index:
-    TCN = df['Test_Case_Name'][i]
-    SFP = df['Source File Path'][i]
-    SFN = df['Source File Name'][i]
-    TFP = df['Target File Path'][i]
-    TFN = df['Target File Name'][i]
-    UK = df['Unique_Keys'][i]
-    RF = df['Run_Flag'][i]
+for i in dfx1.index:
+    TCN = dfx1['Test_Case_Name'][i]
+    SFP = dfx1['Source File Path'][i]
+    SFN = dfx1['Source File Name'][i]
+    SFT = dfx1['Source_Type'][i]
+    TFP = dfx1['Target File Path'][i]
+    TFN = dfx1['Target File Name'][i]
+    UK = dfx1['Unique_Keys'][i]
+    RF = dfx1['Run_Flag'][i]
+    TFT = dfx1['Target_Type'][i]
 
     f1 = SFP + SFN
     f2 = TFP + TFN
     print("====================================================")
     print("Please find below logs for Test Case Name = " + TCN)
     print("====================================================")
-    # Creating 2 Dataframes#
+
+    ############################################
+    # Create Dataframes using Parsers
+    ############################################
     print("Creating Dataframes for Source and Target")
-    df1, df2 = csv.csv1(f1, f2)
+    if SFT == 'csv':
+        df1 = csv.csv1(f1)
+    if TFT == 'csv':
+        df2 = csv.csv1(f2)
 
     if not os.path.exists(parent_dir + "/" + TCN):
         os.makedirs(parent_dir + "/" + TCN)
