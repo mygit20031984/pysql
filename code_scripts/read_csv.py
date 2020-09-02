@@ -1,14 +1,12 @@
 import pandas as pd
-import compare
-import ST
-import find_dup
+from code_scripts import compare, ST, find_dup
 from datetime import datetime
 import os
 
 #############################################
 # Reading Input File
 #############################################
-xl = pd.ExcelFile("input_file.xlsx")
+xl = pd.ExcelFile("Input_file.xlsx")
 df = xl.parse("Sheet1")
 df1 = xl.parse("Sheet2")
 
