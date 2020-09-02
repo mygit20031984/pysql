@@ -1,6 +1,6 @@
 import datacompy
 
-def com1(df1, df2, run_id, parent_dir):
+def com1(df1, df2, run_id, parent_dir, TCN):
     compare = datacompy.Compare(
         df1,
         df2,
@@ -13,7 +13,7 @@ def com1(df1, df2, run_id, parent_dir):
     )
     compare.matches(ignore_extra_columns=False)
 
-    filename1 = parent_dir + "/Summary_Report" + run_id + ".txt"
+    filename1 = parent_dir + "/" + TCN + "/Summary_Report" + run_id + ".txt"
     all_mismatches = parent_dir + "/All_Mismatches_Report_" + run_id + ".txt"
 
     with open(filename1, 'w') as wf:
