@@ -1,0 +1,67 @@
+DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0  Original        3     4
+1       New        3     5
+
+Column Summary
+--------------
+
+Number of columns in common: 3
+Number of columns in Original but not in New: 0
+Number of columns in New but not in Original: 0
+
+Row Summary
+-----------
+
+Matched on: index
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 1
+Number of rows in Original but not in New: 3
+Number of rows in New but not in Original: 4
+
+Number of rows with some compared columns unequal: 1
+Number of rows with all compared columns equal: 0
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 1
+Number of columns compared with all values equal: 2
+Total number of values which compare unequal: 1
+
+Columns with Unequal Values or Types
+------------------------------------
+
+  Column Original dtype New dtype  # Unequal  Max Diff  # Null Diff
+0  marks          int64     int64          1      10.0            0
+
+Sample Rows with Unequal Values
+-------------------------------
+
+   marks (Original)  marks (New)
+0              79.0         69.0
+
+Sample Rows Only in Original (First 10 Columns)
+-----------------------------------------------
+
+    id    name  marks
+3  3.0  Pankaj   99.0
+2  4.0   Sneha   82.0
+1  2.0    Amit   85.0
+
+Sample Rows Only in New (First 10 Columns)
+------------------------------------------
+
+    id    name  marks
+7  4.0  SnehaJ   82.0
+8  5.0   Ninad   81.0
+5  2.0    Amit   85.0
+6  3.0  Pankaj   98.0
+

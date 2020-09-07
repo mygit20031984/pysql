@@ -4,7 +4,6 @@ from code_scripts.parsers import csv
 from datetime import datetime
 import os
 
-
 #############################################
 # Reading Input File
 #############################################
@@ -45,6 +44,7 @@ for i in dfx1.index:
     if SFT == 'csv':
         df1 = csv.csv_df(f1)
 
+
     if TFT == 'csv':
         df2 = csv.csv_df(f2)
 
@@ -83,10 +83,8 @@ for i in dfx1.index:
     # # #####################################################
     diff = "Target_not_in_Source"
     cnt_ST = ST.ST1(df2, df1, run_id, parent_dir, TCN, diff)
-    print("Number of Records in Source and not in Target = " + str(cnt_ST))
+    print("Number of Records in Target and not in Source= " + str(cnt_ST))
 
     # # #####################################################
     # # #Compare Source and Target Data Sets
     # # #####################################################
-    print("Compare Data Sets")
-    compare.com1(df1, df2, run_id, parent_dir, TCN)

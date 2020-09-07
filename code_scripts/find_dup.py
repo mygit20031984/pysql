@@ -1,6 +1,4 @@
 import pandas as pd
-import os
-
 
 def find_dup1(df, df_name, parent_dir, run_id, TCN):
     dfObj = pd.DataFrame(df)
