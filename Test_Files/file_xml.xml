@@ -2,21 +2,26 @@
     <student name="John">
         <email>john@mail.com</email>
         <grade>A</grade>
+        <Sub_grade>A1</Sub_grade>
+        <Marks>85</Marks>
         <age>16</age>
     </student>
     <student name="Alice">
         <email>alice@mail.com</email>
         <grade>B</grade>
+        <Sub_grade>B1</Sub_grade>
         <age>17</age>
     </student>
     <student name="Bob">
         <email>bob@mail.com</email>
         <grade>C</grade>
+        <Sub_grade>C1</Sub_grade>
         <age>16</age>
     </student>
     <student name="Hannah">
         <email>hannah@mail.com</email>
         <grade>A</grade>
+        <Sub_grade>A2</Sub_grade>
         <age>17</age>
     </student>
 </data>
