@@ -1,7 +1,6 @@
-import json
+import pandas as pd
 
-Input_jsonFile = "C:/Users/Owner/PycharmProjects/pysql/Test_Files/gtest.json"
 
-inputFile = open(Input_jsonFile)
-data = json.load(inputFile)
-print(data)
+def read_json_df(f):
+    df = pd.read_json(f)
+    print(df)

@@ -1,6 +1,6 @@
 import pandas as pd
 from code_scripts import compare, ST, find_dup
-from code_scripts.parsers import csv
+from code_scripts.parsers import read_csv, read_avro, read_json
 from datetime import datetime
 import os
 
@@ -41,12 +41,19 @@ for i in dfx1.index:
     # Create Dataframes using Parsers
     ############################################
     print("Creating Dataframes for Source and Target")
-    if SFT == 'csv':
-        df1 = csv.csv_df(f1)
-
+    if SFT == 'CSV':
+        df1 = read_csv.read_csv_df(f1)
+    elif SFT == 'AVRO':
+        df1 = read_avro.read_avro_df(f1)
+    elif SFT == 'JSON':
+        df1 = read_json.read_json_df(f1)
 
     if TFT == 'csv':
-        df2 = csv.csv_df(f2)
+        df2 = read_csv.read_csv_df(f2)
+    elif SFT == 'AVRO':
+        df1 = read_avro.read_avro_df(f2)
+    elif SFT == 'JSON':
+        df1 = read_json.read_json_df(f2)
 
     if not os.path.exists(parent_dir + "/" + TCN):
         os.makedirs(parent_dir + "/" + TCN)
