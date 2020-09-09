@@ -1,0 +1,5 @@
+name     title              salary
+Ryxlar   Chief Dragon Slayer20000
+Tiqla    Assistant Alchemist4000
+Brynz    Brute Squad        1000
+Mr PotatoMess Cook          35000 
