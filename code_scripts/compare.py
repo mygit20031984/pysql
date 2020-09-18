@@ -1,11 +1,11 @@
 import datacompy
 
-def com1(df1, df2, run_id, parent_dir, TCN):
+def com1(df1, df2, run_id, parent_dir, TCN, key):
     compare = datacompy.Compare(
         df1,
         df2,
-        on_index=True,
-        #    join_columns=2,  #You can also specify a list of columns
+        on_index=False,
+        join_columns=key,  # You can also specify a list of columns
         abs_tol=0,  # Optional, defaults to 0
         rel_tol=0,  # Optional, defaults to 0
         df1_name='Original',  # Optional, defaults to 'df1'
