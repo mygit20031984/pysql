@@ -2,7 +2,7 @@ import pandas
 import fastavro
 
 
-def avro_df(filepath, encoding):
+def read_avro_df(filepath, encoding):
     with open(filepath, encoding) as fp:
         reader = fastavro.reader(fp)
         records = [r for r in reader]

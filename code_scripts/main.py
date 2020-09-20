@@ -59,7 +59,6 @@ for i in dfx1.index:
         os.makedirs(parent_dir + "/" + TCN)
 
 
-    #
     # ############################################
     # # Split Keys to List
     # ############################################
@@ -69,7 +68,6 @@ for i in dfx1.index:
         else:
             str_to_list = val.split(",")
             return str_to_list
-
 
     key = clean_key(str(UK))
     print(key)
