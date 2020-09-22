@@ -1,4 +1,6 @@
 import cx_Oracle
+import pandas as pd
+
 from sqlalchemy import create_engine
 
 engine = create_engine('oracle://user:password@host_or_scan_address:1521/ORACLE_SERVIVE_NAME')
