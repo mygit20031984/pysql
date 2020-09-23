@@ -1,6 +1,6 @@
 import pandas as pd
 from code_scripts import compare, ST, find_dup
-from code_scripts.parsers import read_csv, read_avro, read_json
+from code_scripts.parsers import read_csv, read_avro, read_json, read_oracle
 from datetime import datetime
 import os
 
@@ -44,7 +44,7 @@ for i in dfx1.index:
     if SFT == 'CSV':
         df1 = read_csv.read_csv_df(f1)
     elif SFT == 'ORACLE':
-        df1 = read_json.read_json_df(f1)
+        df1 = read_oracle.read_oracle_df(f1)
 
     if TFT == 'CSV':
         df2 = read_csv.read_csv_df(f2)

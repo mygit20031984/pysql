@@ -1,8 +1,18 @@
-import cx_Oracle
 import pandas as pd
-
 from sqlalchemy import create_engine
 
-engine = create_engine('oracle://user:password@host_or_scan_address:1521/ORACLE_SERVIVE_NAME')
+def read_oracle_df(UN, PWD, HN, SID, PORT, SQL):
+    oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{hostname}:{port}/{database}'
 
-df = pd.read_sql('select * from table_name', engine)
+    engine = create_engine(
+        oracle_connection_string.format(
+            username=UN,
+            password=PWD,
+            hostname=HN,
+            port=PORT,
+            database=SID,
+        )
+    )
+    query = SQL
+    df = pd.read_sql(query, engine)
+    return df
