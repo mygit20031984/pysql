@@ -1,5 +1,10 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from code_scripts.conn_oracle import username
+
+UN = username
+print(UN)
+
 
 def read_oracle_df(UN, PWD, HN, SID, PORT, SQL):
     oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{hostname}:{port}/{database}'
