@@ -1,23 +1,23 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from code_scripts.conn_oracle import username
+from code_scripts.Connection_Details.conn_oracle import username
 
-UN = username
-print(UN)
+# UN = username
+# print(UN)
 
 
-def read_oracle_df(UN, PWD, HN, SID, PORT, SQL):
-    oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{hostname}:{port}/{database}'
+oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{hostname}:{port}/{database}'
 
-    engine = create_engine(
-        oracle_connection_string.format(
-            username=UN,
-            password=PWD,
-            hostname=HN,
-            port=PORT,
-            database=SID,
-        )
+engine = create_engine(
+    oracle_connection_string.format(
+        username='system',
+        password='oracle',
+        hostname='localhost',
+        port='1521',
+        database='XE',
     )
-    query = SQL
-    df = pd.read_sql(query, engine)
-    return df
+)
+
+data = pd.read_sql("SELECT * FROM tab1", engine)
+
+data.to_csv('oracle_data.csv', index=False)
